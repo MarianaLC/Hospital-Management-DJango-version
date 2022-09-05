@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Menu Enfermeiro</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style>
+.material-icons {vertical-align:-14%}
+</style>
+<style>
+.div-1 {
+        background-color: #FF6347;
+    }
+.vertical-menu {
+  width: 400px;
+}
+
+.vertical-menu a {
+  background-color: #eee;
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+}
+
+.vertical-menu a:hover {
+  background-color: #ccc;
+}
+
+.vertical-menu a.active {
+  background-color: #FF6347;
+  color: white;
+}
+</style>
+<body>
+<head>
+{% for group in user.groups.all %}
+    {% if group.name == 'Enfermeiros'  %}
+<div class="w3-container">
+  <h3>Hospital | Enfermeiro </h3>
+
+  <div  class="w3-padding w3-xlarge div-1 w3-text-white">
+    <a href="/hospital/logout" <i class="material-icons">person</i></a>
+    <b>Bem-vindo!</b>
+  </div>
+</head>
+        <body>
+        <ul>
+            <p><b>Selecione a opção pretendida.</b></p>
+            <br/>
+                <div class="vertical-menu" >
+                  <a href="#" class="active">Menu Enfermeiro</a>
+                  <a href="menuenfermeiro/atoenfermagem_create">Registar Ato de Enfermagem</a>
+                  <a href="menuenfermeiro/enfermeiro_info">Informação Pessoal</a>
+                  <a href="menuenfermeiro/enfermeiroatos">Atos de Enfermagem Registados</a>
+                  <a href="/hospital/logout">Logout</a>
+                </div>
+            <br/>
+        </ul>
+        </body>
+    {% else %}
+        <body>
+            <div class="w3-panel div-1 w3-text-white">
+                <h3>Não tem acesso a esta página.</h3>
+            </div>
+            <br/>
+            <a href="/hospital/logout" class="w3-bar-item">Logout e redirecionamento para login</a>
+        </body>
+    {% endif %}
+{% endfor %}
+</html>

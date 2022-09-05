@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Menu Funcionário</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style>
+.material-icons {vertical-align:-14%}
+</style>
+<style>
+.div-1 {
+        background-color: #A9A9A9;
+    }
+.vertical-menu {
+  width: 500px;
+}
+
+.vertical-menu a {
+  background-color: #eee;
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+}
+
+.vertical-menu a:hover {
+  background-color: #ccc;
+}
+
+.vertical-menu a.active {
+  background-color: #A9A9A9;
+  color: white;
+}
+</style>
+<body>
+<head>
+{% for group in user.groups.all %}
+    {% if group.name == 'Funcionário'  %}
+<div class="w3-container">
+  <h3>Hospital | Funcionário </h3>
+
+  <div  class="w3-padding w3-xlarge div-1 w3-text-white">
+    <a href="/hospital/logout" <i class="material-icons">person</i></a>
+    <b>Bem-vindo!</b>
+  </div>
+</head>
+        <body>
+        <ul>
+            <p><b>Selecione a opção pretendida.</b></p>
+            <br/>
+                <div class="vertical-menu" >
+                  <a href="#" class="active">Menu Funcionário</a>
+                  <a href="menufuncionario/enfermeiroestatisticas">Consultar estatísticas relativas aos enfermeiros e seus atos</a>
+                  <a href="menufuncionario/farmaceuticoestatisticas">Consultar estatísticas relativas aos farmacêuticos e seus atos</a>
+                  <a href="menufuncionario/medicoestatisticas">Consultar estatísticas relativas aos médicos e seus atos</a>
+                  <a href="menufuncionario/utenteestatisticas">Consultar estatísticas relativas aos utentes e seus atos</a>
+                  <a href="/hospital/logout">Logout</a>
+                </div>
+            <br/>
+        </ul>
+        </body>
+    {% else %}
+        <body>
+            <div class="w3-panel div-1 w3-text-white">
+                <h3>Não tem acesso a esta página.</h3>
+            </div>
+            <br/>
+            <a href="/hospital/logout" class="w3-bar-item">Logout e redirecionamento para login</a>
+        </body>
+    {% endif %}
+{% endfor %}
+</html>

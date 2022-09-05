@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<style>
+.div-1 {
+        background-color: #DDA0DD;
+    }
+.material-icons {vertical-align:-14%}
+</style>
+<head>
+    <title>Menu Farmacêutico | Gestão de Stocks</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+{% for group in user.groups.all %}
+    {% if group.name == 'Farmacêuticos'%}
+        <body>
+        <div class="w3-padding w3-xlarge w3-text">
+              <h3>GLM | Farmacêutico </h3>
+            </div>
+             <div class="w3-padding w3-xlarge div-1 w3-text-white">
+       		<a href="/hospital/menufarmaceutico"<i class="material-icons">home</i></a>
+    		<a href="/hospital/logout" <i class="material-icons">person</i></a>
+    		<b>Informação Pessoal</b>
+         </div>
+            {% for c in farmaceutico_info %}
+                <ul>{% for key, value in c.items %}
+                    <input class="w3-input" type="text"><li><b>{{key}}</b> : {{value}}<p></p> <p>
+                {% endfor %}</li></ul><br></ul>
+            {% endfor %}
+        </body>
+    {% else %}
+        <body>
+        <div class="w3-panel div-1 w3-text-white">
+        <h3>Não tem acesso a esta página.</h3>
+        </div>
+        <a href="/hospital/logout" class="w3-bar-item w3-button">Logout e redirecionamento para login</a>
+        </body>
+    {% endif %}
+{% endfor %}
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Menu Utente</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style>
+.material-icons {vertical-align:-14%}
+</style>
+<style>
+.vertical-menu {
+  width: 200px;
+}
+
+.vertical-menu a {
+  background-color: #eee;
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+}
+
+.vertical-menu a:hover {
+  background-color: #ccc;
+}
+
+.vertical-menu a.active {
+  background-color: #00CED1;
+  color: white;
+}
+</style>
+<body>
+
+<div class="w3-container w3-text-cyan">
+  <h3>Hospital | Utente</h3>
+
+  <div  class="w3-padding w3-xlarge w3-cyan w3-text-white">
+    <a href="/hospital/logout" <i class="material-icons">person</i></a>
+    <b>Bem-vindo!</b>
+  </div>
+</head>
+ {% for group in user.groups.all %}
+    {% if group.name == 'Utentes'  %}
+        <body>
+        <ul>
+            <p><b>Selecione a opção pretendida.</b></p>
+            <br/>
+                <div class="vertical-menu" >
+                  <a href="#" class="active">Menu Utente</a>
+                  <a href="/hospital/menuutente/fichautente">Ficha Utente</a>
+                  <a href="/hospital/logout">Logout</a>
+                </div>
+            <br/>
+        </ul>
+        </body>
+    {% else %}
+        <body>
+            <div class="w3-panel w3-cyan w3-text-white">
+                <h3>Não tem acesso a esta página.</h3>
+            </div>
+            <br/>
+            <a href="/hospital/logout" class="w3-bar-item">Logout e redirecionamento para login</a>
+        </body>
+    {% endif %}
+{% endfor %}
+</html>

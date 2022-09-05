@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <title>Menu Utente | Ficha Utente</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+ {% for group in user.groups.all %}
+    {% if group.name == 'Utentes'  %}
+        <body>
+            <div class="w3-panel w3-green">
+                <h3>Menu Utente | Ficha Utente</h3>
+            </div>
+            <ul>
+            {% csrf_token %}
+            <h4><b>Informação Utente:</b></h4>
+            {% for c in utente_info %}
+                <ul>{% for key, value in c.items %}
+                    <li><b>{{key}}</b> : {{value}}<p></p>
+                {% endfor %}</li></ul><br></ul>
+            {% endfor %}
+        </body>
+    {% else %}
+        <body>
+            <div class="w3-panel w3-green">
+                <h3>Não tem acesso a esta página.</h3>
+            </div>
+            <br/>
+            <a href="/hospital/logout" class="w3-bar-item w3-button w3-light-grey">Logout e redirecionamento para login</a>
+        </body>
+    {% endif %}
+{% endfor %}
+</html>

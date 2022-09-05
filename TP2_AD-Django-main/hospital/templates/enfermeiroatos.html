@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style>
+.material-icons {vertical-align:-14%}
+.div-1 {
+        background-color: #FF6347;
+    }
+</style>
+<head>
+    <title>Menu Enfermeiro | Gestão Processo Clínico</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+ {% for group in user.groups.all %}
+    {% if group.name == 'Enfermeiros'  %}
+        <body>
+            <div class="w3-padding w3-xlarge w3-text">
+              <h3>Hospital | Enfermeiro</h3>
+            </div>
+             <div class="w3-padding w3-xlarge div-1 w3-text-white">
+       		<a href="/hospital/menuenfermeiro"<i class="material-icons">home</i></a>
+    		<a href="/hospital/logout" <i class="material-icons">person</i></a>
+    		<b>Atos Enfermagem Registados</b>
+
+
+  </div>
+            <ul>
+            {% csrf_token %}
+            {% for c in atosenfermagem %}
+                <h4><b>Ato Enfermagem:</b></h4>
+                <ul>{% for key, value in c.items %}
+                    <input class="w3-input" type="text"><li><b>{{key}}</b> : {{value}}
+                {% endfor %}</li></ul><br>
+            {% endfor %}
+        </body>
+    {% else %}
+        <body>
+            <div class="w3-panel div-1 w3-text-white">
+                <h3>Não tem acesso a esta página.</h3>
+            </div>
+            <br/>
+            <a href="/hospital/logout" class="w3-bar-item">Logout e redirecionamento para login</a>
+            <br/>
+        </body>
+    {% endif %}
+{% endfor %}
+</html>

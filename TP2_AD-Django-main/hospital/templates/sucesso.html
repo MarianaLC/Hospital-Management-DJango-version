@@ -1,0 +1,12 @@
+{% block content %}
+    <div class="erro">
+        <h1>Registo bem sucedido! </h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <input type="hidden" name="next" value="{{ request.path }}">
+            <button type="submit">Voltar Atrás</button>
+            <a href="/hospital/logout">Fazer logout</a></p>
+        </form>
+    </div>
+{% endblock %}
